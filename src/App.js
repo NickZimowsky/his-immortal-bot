@@ -22,7 +22,7 @@ function App() {
 
       <Routes>
         <Route index element={ <ProductList /> } />
-        <Route path='form' element={ <TForm />} />
+        <Route path='/form' element={ <TForm />} />
 
       </Routes>
       
