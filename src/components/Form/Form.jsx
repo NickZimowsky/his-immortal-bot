@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import './Form.css'
 import { useTelegram } from '../../hooks/useTelegram';
 
-const TForm = () => {
+const Form = () => {
 
   const [country, setCountry] = useState('');
-  const [city, setCity] = useState('');
-  const [subject, setSubject] = useState('');
+  const [street, setStreet] = useState('');
+  const [subject, setSubject] = useState('physical');
   const {tg} = useTelegram();
 
   useEffect(() => {
@@ -19,20 +19,20 @@ const TForm = () => {
 
   useEffect(() => {
 
-    if(!city || !country) {
+    if(!street || !country) {
       tg.MainButton.hide();
     } else {
       tg.MainButton.show();
     }
 
-  }, [country, city]);
+  }, [country, street]);
 
   const onChangeCountry = (e) => {
     setCountry(e.target.value)
   }
 
-  const onChangeCity = (e) => {
-    setCity(e.target.value)
+  const onChangeStreet = (e) => {
+    setStreet(e.target.value)
   }
 
   const onChangeSubject = (e) => {
@@ -54,9 +54,9 @@ const TForm = () => {
       <input 
       className={'input'} 
       type="text" 
-      placeholder={'Город...'} 
-      value={city}
-      onChange={onChangeCity}
+      placeholder={'Улица...'} 
+      value={street}
+      onChange={onChangeStreet}
       />
 
       <select className={'select'} value={subject} onChange={onChangeSubject}>
@@ -68,4 +68,4 @@ const TForm = () => {
   )
 }
 
-export default TForm;
+export default Form;
